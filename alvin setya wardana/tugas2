@@ -1,0 +1,37 @@
+package main
+
+import (
+	"fmt"
+	"math"
+	"strings"
+)
+
+func main() {
+	var jenis string
+	var durasi float64
+
+	fmt.Print("Masukkan jenis kendaraan (motor/mobil/truk): ")
+	fmt.Scanln(&jenis)
+
+	fmt.Print("Masukkan durasi parkir (jam): ")
+	fmt.Scanln(&durasi)
+
+	// Pembulatan ke atas jika durasi < 1 jam
+	jam := int(math.Ceil(durasi))
+
+	var tarifPerJam int
+	switch strings.ToLower(jenis) {
+	case "motor":
+		tarifPerJam = 2000
+	case "mobil":
+		tarifPerJam = 5000
+	case "truk":
+		tarifPerJam = 8000
+	default:
+		fmt.Println("Jenis kendaraan tidak dikenali.")
+		return
+	}
+
+	total := tarifPerJam * jam
+	fmt.Printf("Rp %d\n", total)
+}
