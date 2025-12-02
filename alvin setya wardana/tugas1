@@ -1,0 +1,25 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+	input, _ := reader.ReadString('\n')
+	input = strings.TrimSpace(input)
+
+	ph, err := strconv.ParseFloat(input, 64)
+	if err != nil {
+		fmt.Println("Nilai pH tidak valid. Nilai pH harus antara 0 dan 14.")
+		return
+	}
+
+	if ph < 0 || ph > 14 {
+		fmt.Println("Nilai pH tidak valid. Nilai pH harus antara 0 dan 14.")
+		return
+	}
